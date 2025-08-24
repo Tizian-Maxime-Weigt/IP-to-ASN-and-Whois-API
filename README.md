@@ -1,12 +1,14 @@
 # IP-to-ASN Lookup API (fast hehe)
 
-This API allows you to lookup the **ASN**, **country**, and **provider name** for a given IPv4 or IPv6 address.
+This API allows you to lookup the **ASN**, **country**, **country name**, and **provider name** for a given IPv4 or IPv6 address.
 
 ## Base URL
 
 ```
-https://cdn.t-w.dev/whois?ip={IP}
+https://cdn.t-w.dev/whois?ip={IP}&locale={locale}
 ```
+
+* `locale` (optional) – `de`, `en`, or `both` (default: `both`)
 
 ---
 
@@ -18,9 +20,10 @@ https://cdn.t-w.dev/whois?ip={IP}
 
 ### Parameters
 
-| Name | Type   | Required | Description                   |
-| ---- | ------ | -------- | ----------------------------- |
-| ip   | string | Yes      | IPv4 or IPv6 address to query |
+| Name   | Type   | Required | Description                                     |
+| ------ | ------ | -------- | ----------------------------------------------- |
+| ip     | string | Yes      | IPv4 or IPv6 address to query                   |
+| locale | string | No       | Language for `country_name`: `de`, `en`, `both` |
 
 ---
 
@@ -28,13 +31,14 @@ https://cdn.t-w.dev/whois?ip={IP}
 
 ### Success (200)
 
-| Field       | Type   | Description                        |
-| ----------- | ------ | ---------------------------------- |
-| ip          | string | The queried IP address             |
-| asn         | string | Autonomous System Number           |
-| country     | string | 2-letter country code of the ASN   |
-| description | string | Cleaned provider name (normalized) |
-| logo        | string | Provider logo (not all)            |
+| Field         | Type   | Description                               |
+| ------------- | ------ | ----------------------------------------- |
+| ip            | string | The queried IP address                    |
+| asn           | string | Autonomous System Number                  |
+| country       | string | 2-letter country code of the ASN          |
+| country\_name | string | Localized country name (`locale` applied) |
+| description   | string | Cleaned provider name (normalized)        |
+| logo          | string | Provider logo (not all)                   |
 
 **Example:**
 
@@ -43,6 +47,7 @@ https://cdn.t-w.dev/whois?ip={IP}
   "ip": "8.8.8.8",
   "asn": "15169",
   "country": "US",
+  "country_name": "United States / Vereinigte Staaten",
   "description": "Google",
   "logo": "https://cdn.t-w.dev/img/Google.webp"
 }
@@ -80,6 +85,6 @@ flowchart TD
     D -- No --> E[Return Error: Invalid IP address]
     D -- Yes --> F[Lookup IP in ASN database]
     F --> G{ASN found?}
-    G -- Yes --> H[Return JSON with ip, asn, country, description]
+    G -- Yes --> H[Return JSON with ip, asn, country, country_name, description, logo]
     G -- No --> I[Return Error: ASN not found]
 ```

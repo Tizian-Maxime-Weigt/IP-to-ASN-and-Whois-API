@@ -34,6 +34,7 @@ https://cdn.t-w.dev/whois?ip={IP}
 | asn         | string | Autonomous System Number           |
 | country     | string | 2-letter country code of the ASN   |
 | description | string | Cleaned provider name (normalized) |
+| logo        | string | Provider logo (not all)            |
 
 **Example:**
 
@@ -42,7 +43,8 @@ https://cdn.t-w.dev/whois?ip={IP}
   "ip": "8.8.8.8",
   "asn": "15169",
   "country": "US",
-  "description": "Google"
+  "description": "Google",
+  "logo": "https://cdn.t-w.dev/img/Google.webp"
 }
 ```
 

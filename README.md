@@ -54,7 +54,7 @@ https://cdn.t-w.dev/whois?ip={IP}
 | ----- | ------ | -------------------------- |
 | error | string | Description of the problem |
 
-**Examples:**
+**Possible errors:**
 
 ```json
 { "error": "Missing 'ip' parameter" }

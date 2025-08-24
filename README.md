@@ -1,6 +1,6 @@
 # IP-to-ASN Lookup API (fast hehe)
 
-This API allows you to lookup the **ASN**, **country**, **country name**, and **provider name** for a given IPv4 or IPv6 address. This API uses an very Optimzed Cache to have very fast response times.
+This API allows you to lookup the **ASN**, **country**, **country name**, and **provider name** for a given IPv4 or IPv6 address. This API uses an very Optimzed Cache to have very fast response times. The API does Support Quic (http3) and http2 to deliver fast responses! ⚡
 
 ## Base URL
 
